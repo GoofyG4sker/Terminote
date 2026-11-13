@@ -5,7 +5,12 @@ typedef enum state{
   FALSE
 }
 
+struct flags{
 
+  state title;
+  state message;
+
+}flags;
 
 
 int main(){
