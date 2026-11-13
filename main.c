@@ -12,12 +12,13 @@ struct flags{
 
   state title;
   state message;
-
+  char *titleContent[];
+  char *messageContent[];
 }flags;
 
 //Function Declarations
 void parseFlag(char flag);
-
+void saveContent(char *content[]);
 
 int main(int argc , char *argv[]){
 
@@ -32,6 +33,10 @@ int main(int argc , char *argv[]){
           exit(0);
         }
       }
+     if(flag.title==TRUE && flag.message == FALSE){
+        *titleContent = *argv[3];
+        *messageContent = *argv[4];
+     }
     }
 
     return 0;
@@ -49,4 +54,7 @@ void parseFlag(char flag){
 
 }
 
+void saveContent(){
+
+}
 
