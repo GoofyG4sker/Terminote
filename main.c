@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 typedef enum{
   TRUE,
@@ -8,13 +10,13 @@ typedef enum{
 
 struct flags{
 
-  state title = FALSE;
-  state message = FALSE;
+  state title;
+  state message;
 
 }flags;
 
 //Function Declarations
-// char parseFlag(char flag);
+void parseFlag(char flag);
 
 
 int main(int argc , char *argv[]){
@@ -22,10 +24,11 @@ int main(int argc , char *argv[]){
     if(argc>1){
       for(int i=1;i!=argc;i++){
         if(argv[i][0]=='-'){
-          //Parse the flag
+          //Parse the flag]
+          parseFlag(argv[i][1]);
         }else{
           //Throw Error
-          fnprintf(stderr,"Invalid Syntax");
+          fprintf(stderr,"Invalid Syntax");
           exit(0);
         }
       }
@@ -34,13 +37,13 @@ int main(int argc , char *argv[]){
     return 0;
 }
 
-char parseFlag(char flag){
-    if(strcmp(flag,'t')==0){
+void parseFlag(char flag){
+    if(flag=='t'){
       flags.title = TRUE;
-    }else if(strcmp(flag,'m')==0){
-      flag.message = TRUE;
+    }else if (flag=='m'){
+      flags.message = TRUE;
     }else{
-      fnprintf(stderr,"Invalid Flag");
+      fprintf(stderr,"Invalid Flag");
       exit(0);
     }
 
