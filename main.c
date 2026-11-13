@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+
+
+
+
+
 typedef enum{
   TRUE,
   FALSE
@@ -7,10 +12,13 @@ typedef enum{
 
 struct flags{
 
-  state title;
-  state message;
+  state title = FALSE;
+  state message = FALSE;
 
 }flags;
+
+//Function Declarations
+
 
 
 int main(int argc , char *argv[]){
@@ -28,3 +36,13 @@ int main(int argc , char *argv[]){
     }
 
 }
+
+char parseFlag(char flag){
+    if(strcmp(flag,'t')){
+      flags.title = TRUE;
+    }else if(strcmp(flag,'m')){
+      flag.message = TRUE;
+    }
+}
+
+
