@@ -14,6 +14,7 @@ struct flags{
   state message;
   char *titleContent[];
   char *messageContent[];
+  int eoflag;
 }flags;
 
 //Function Declarations
@@ -22,21 +23,22 @@ void saveContent(char *content[]);
 
 int main(int argc , char *argv[]){
 
+
+
     if(argc>1){
-      for(int i=1;i!=argc;i++){
-        if(argv[i][0]=='-'){
+
+      for(int i=1;i!=argc && argv[i][0]=='-';i++){
           //Parse the flag]
           parseFlag(argv[i][1]);
-        }else{
-          //Throw Error
-          fprintf(stderr,"Invalid Syntax");
-          exit(0);
-        }
+          flags.eoflag = i;
       }
-     if(flag.title==TRUE && flag.message == FALSE){
-        *titleContent = *argv[3];
-        *messageContent = *argv[4];
-     }
+
+
+
+    }else{
+     //Throw Error
+     fprintf(stderr,"Invalid Syntax");
+     exit(0);
     }
 
     return 0;
