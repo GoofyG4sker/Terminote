@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-typedef enum state{
+typedef enum{
   TRUE,
   FALSE
-}
+}state;
 
 struct flags{
 
@@ -22,7 +22,7 @@ int main(int argc , char *argv[]){
         }else{
           //Throw Error
           printf("Invalid Syntax");
-          exit();
+          return(1);
         }
       }
     }
