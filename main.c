@@ -1,9 +1,5 @@
 #include <stdio.h>
-
-
-
-
-
+#include <stdlib.h>
 
 typedef enum{
   TRUE,
@@ -18,7 +14,7 @@ struct flags{
 }flags;
 
 //Function Declarations
-
+// char parseFlag(char flag);
 
 
 int main(int argc , char *argv[]){
@@ -29,20 +25,25 @@ int main(int argc , char *argv[]){
           //Parse the flag
         }else{
           //Throw Error
-          printf("Invalid Syntax");
-          return(1);
+          fnprintf(stderr,"Invalid Syntax");
+          exit(0);
         }
       }
     }
 
+    return 0;
 }
 
 char parseFlag(char flag){
-    if(strcmp(flag,'t')){
+    if(strcmp(flag,'t')==0){
       flags.title = TRUE;
-    }else if(strcmp(flag,'m')){
+    }else if(strcmp(flag,'m')==0){
       flag.message = TRUE;
+    }else{
+      fnprintf(stderr,"Invalid Flag");
+      exit(0);
     }
+
 }
 
 
