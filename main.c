@@ -14,7 +14,7 @@ struct flags{
   state message;
   char *titleContent[];
   char *messageContent[];
-  int eoflag;
+  int eoFlag;
 }flags;
 
 //Function Declarations
@@ -27,11 +27,18 @@ int main(int argc , char *argv[]){
 
     if(argc>1){
 
-      for(int i=1;i!=argc && argv[i][0]=='-';i++){
-          //Parse the flag]
-          parseFlag(argv[i][1]);
-          flags.eoflag = i;
+      for(int i=1;i!=argc;i++){
+        if(argv[i][0]=='-'){
+               //Parse the flag]
+           parseFlag(argv[i][1]);
+           flags.eoFlag = i;
+        }else{
+          saveContent(argv[i]);
+        }
+
+
       }
+
 
 
 
