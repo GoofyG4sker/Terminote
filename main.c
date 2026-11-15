@@ -47,11 +47,11 @@ int main(int argc , char *argv[]){
         switch(flags.order[flags.eoFlag]){
 
           case TITLE:
-             strcpy(flags.content[TITLE],argv[flags.eoFlag]);
+             flags.content[TITLE]=argv[flags.eoFlag];
             break;
 
           case MESSAGE:
-              strcpy(flags.content[MESSAGE],argv[flags.eoFlag]) ;
+              flags.content[MESSAGE]=argv[flags.eoFlag];
             break;
 
           default:
