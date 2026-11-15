@@ -17,9 +17,10 @@ typedef enum{
 
 struct flags{
 
-  char *content[];
   int eoFlag;
-  flag order[];
+  flag order[5];
+  char content[][256];
+
 }flags;
 
 //Function Declarations
@@ -33,7 +34,7 @@ int main(int argc , char *argv[]){
 
     if(argc>1){
 
-      for(int i=1;argv[i][0]=='-' && i!=argc;i++){
+      for(int i=1;i!=argv && argv[i][0]=='-'  ;i++){
                //Parse the flag]
            parseFlag(argv[i][1] , i);
            flags.eoFlag = i+1;
@@ -46,20 +47,20 @@ int main(int argc , char *argv[]){
         switch(flags.order[flags.eoFlag]){
 
           case TITLE:
-             flags.content[TITLE] = argv[flags.eoFlag];
+             strcpy(flags.content[TITLE],argv[flags.eoFlag]);
             break;
 
           case MESSAGE:
-              flags.content[MESSAGE] = argv[flags.eoFlag];
+              strcpy(flags.content[MESSAGE],argv[flags.eoFlag]) ;
             break;
 
           default:
-            programRunning = FALSE
+            programRunning = FALSE;
         }
         flags.eoFlag++;
       }
 
-
+      writeContent();
 
     }else{
      //Throw Error
@@ -84,9 +85,10 @@ void parseFlag(char flag , int count){
 
 void writeContent(){
 
-  FILE *note = fopen("%s.MD",flags.content[TITLE]);
+  char filename = strcat(flags.content,".MD");
+  FILE *note = fopen(filename,"w");
 
-  fprintf(note,"%s",flags.content[MESSAGE]);
+  snprintf(note,sizeof(flags.content[MESSAGE]),flags.content[MESSAGE]);
 
   fclose(note);
 
