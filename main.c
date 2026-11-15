@@ -92,7 +92,7 @@ void writeContent(){
 
   FILE *note = fopen(filename,"w");
 
-  snprintf(*note,sizeof(flags.content[MESSAGE]),flags.content[MESSAGE]);
+  fprintf(note,flags.content[MESSAGE]);
 
   fclose(note);
 
