@@ -16,8 +16,7 @@ typedef enum{
 
 struct flags{
 
-  char *titleContent[];
-  char *messageContent[];
+  char *content[];
   int eoFlag;
   flag order[];
 }flags;
@@ -38,7 +37,7 @@ int main(int argc , char *argv[]){
            parseFlag(argv[i][1] , i);
            flags.eoFlag = i;
         }else{
-          saveContent(argv[i]);
+
         }
 
 
@@ -72,9 +71,6 @@ void saveContent(char *content[]){
 
 
 
-  if(flags.title==TRUE){
-    flags.titleContent; = content[];
-  }
 
 
 
