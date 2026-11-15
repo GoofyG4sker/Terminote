@@ -36,7 +36,7 @@ int main(int argc , char *argv[]){
 
       for(int i=1;i!=argc && argv[i][0]=='-'  ;i++){
                //Parse the flag]
-           parseFlag(*argv[i][1] , i);
+           parseFlag(&argv[i][1] , i);
            flags.eoFlag = i+1;
 
       }
@@ -72,9 +72,9 @@ int main(int argc , char *argv[]){
 }
 
 void parseFlag(char *flag , int count){
-  if(flag=='t'){
+  if(*flag=='t'){
     flags.order[count]=TITLE;
-    }else if (flag=='m'){
+    }else if (*flag=='m'){
       flags.order[count] = MESSAGE;
     }else{
       fprintf(stderr,"Invalid Flag");
