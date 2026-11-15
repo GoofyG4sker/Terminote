@@ -8,6 +8,7 @@ typedef enum{
   FALSE
 }state;
 
+
 typedef enum{
   TITLE,
   MESSAGE
@@ -23,7 +24,6 @@ struct flags{
 
 //Function Declarations
 void parseFlag(char flag , int count);
-void saveContent(char *content[]);
 
 int main(int argc , char *argv[]){
 
@@ -31,18 +31,30 @@ int main(int argc , char *argv[]){
 
     if(argc>1){
 
-      for(int i=1;i!=argc;i++){
-        if(argv[i][0]=='-'){
+      for(int i=1;argv[i][0]=='-' && i!=argc;i++){
                //Parse the flag]
            parseFlag(argv[i][1] , i);
-           flags.eoFlag = i;
-        }else{
-
-        }
-
+           flags.eoFlag = i+1;
 
       }
 
+      state programRunning = TRUE;
+
+      while(programRunning != FALSE){
+        switch(flags.order[flags.eoFlag]){
+
+          case TITLE:
+             flags.content[TITLE] = argv[flags.eoFlag];
+            break;
+
+          case MESSAGE:
+              flags.content[MESSAGE] = argv[flags.eoFlag];
+            break;
+
+          default:
+            programRunning = FALSE
+        }
+      }
 
 
 
@@ -67,12 +79,4 @@ void parseFlag(char flag , int count){
 
 }
 
-void saveContent(char *content[]){
-
-
-
-
-
-
-}
 
