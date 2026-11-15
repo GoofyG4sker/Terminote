@@ -24,6 +24,8 @@ struct flags{
 
 //Function Declarations
 void parseFlag(char flag , int count);
+void writeContent();
+
 
 int main(int argc , char *argv[]){
 
@@ -80,4 +82,13 @@ void parseFlag(char flag , int count){
 
 }
 
+void writeContent(){
 
+  FILE *note = fopen("%s.MD",flags.content[TITLE]);
+
+  fprintf(note,"%s",flags.content[MESSAGE]);
+
+  fclose(note);
+
+
+}
