@@ -85,10 +85,14 @@ void parseFlag(char *flag , int count){
 
 void writeContent(){
 
-  char filename = strcat(flags.content,".MD");
+  size_t strMemory= strlen(flags.content[TITLE]) + 4;
+  char *filename = malloc(strMemory);
+
+  snprintf(filename,strMemory,"%s.MD",flags.content[TITLE]);
+
   FILE *note = fopen(filename,"w");
 
-  snprintf(note,sizeof(flags.content[MESSAGE]),flags.content[MESSAGE]);
+  snprintf(*note,sizeof(flags.content[MESSAGE]),flags.content[MESSAGE]);
 
   fclose(note);
 
