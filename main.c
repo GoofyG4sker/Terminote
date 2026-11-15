@@ -54,6 +54,7 @@ int main(int argc , char *argv[]){
           default:
             programRunning = FALSE
         }
+        flags.eoFlag++;
       }
 
 
