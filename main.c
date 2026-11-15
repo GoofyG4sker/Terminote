@@ -19,12 +19,12 @@ struct flags{
 
   int eoFlag;
   flag order[5];
-  char content[][256];
+  char *content[];
 
 }flags;
 
 //Function Declarations
-void parseFlag(char flag , int count);
+void parseFlag(char *flag , int count);
 void writeContent();
 
 
@@ -34,9 +34,9 @@ int main(int argc , char *argv[]){
 
     if(argc>1){
 
-      for(int i=1;i!=argv && argv[i][0]=='-'  ;i++){
+      for(int i=1;i!=argc && argv[i][0]=='-'  ;i++){
                //Parse the flag]
-           parseFlag(argv[i][1] , i);
+           parseFlag(*argv[i][1] , i);
            flags.eoFlag = i+1;
 
       }
@@ -71,7 +71,7 @@ int main(int argc , char *argv[]){
     return 0;
 }
 
-void parseFlag(char flag , int count){
+void parseFlag(char *flag , int count){
   if(flag=='t'){
     flags.order[count]=TITLE;
     }else if (flag=='m'){
