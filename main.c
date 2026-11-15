@@ -8,17 +8,22 @@ typedef enum{
   FALSE
 }state;
 
+typedef enum{
+  TITLE,
+  MESSAGE
+}flag;
+
+
 struct flags{
 
-  state title;
-  state message;
   char *titleContent[];
   char *messageContent[];
   int eoFlag;
+  flag order[];
 }flags;
 
 //Function Declarations
-void parseFlag(char flag);
+void parseFlag(char flag , int count);
 void saveContent(char *content[]);
 
 int main(int argc , char *argv[]){
@@ -30,7 +35,7 @@ int main(int argc , char *argv[]){
       for(int i=1;i!=argc;i++){
         if(argv[i][0]=='-'){
                //Parse the flag]
-           parseFlag(argv[i][1]);
+           parseFlag(argv[i][1] , i);
            flags.eoFlag = i;
         }else{
           saveContent(argv[i]);
@@ -51,11 +56,11 @@ int main(int argc , char *argv[]){
     return 0;
 }
 
-void parseFlag(char flag){
-    if(flag=='t'){
-      flags.title = TRUE;
+void parseFlag(char flag , int count){
+  if(flag=='t'){
+    flags.order[count]=TITLE;
     }else if (flag=='m'){
-      flags.message = TRUE;
+      flags.order[count] = MESSAGE;
     }else{
       fprintf(stderr,"Invalid Flag");
       exit(0);
@@ -63,7 +68,15 @@ void parseFlag(char flag){
 
 }
 
-void saveContent(){
+void saveContent(char *content[]){
+
+
+
+  if(flags.title==TRUE){
+    flags.titleContent; = content[];
+  }
+
+
 
 }
 
