@@ -48,10 +48,13 @@ int main(int argc , char *argv[]){
 
           case TITLE:
              flags.content[TITLE]=argv[flags.eoFlag];
+             printf(flags.content[TITLE]);
             break;
 
           case MESSAGE:
               flags.content[MESSAGE]=argv[flags.eoFlag];
+              printf(flags.content[TITLE]);
+
             break;
 
           default:
@@ -74,8 +77,10 @@ int main(int argc , char *argv[]){
 void parseFlag(char *flag , int count){
   if(*flag=='t'){
     flags.order[count]=TITLE;
+    printf("Flag Title Gotten \n");
     }else if (*flag=='m'){
-      flags.order[count] = MESSAGE;
+    flags.order[count] = MESSAGE;
+    printf("Flag Message Gotten \n");
     }else{
       fprintf(stderr,"Invalid Flag");
       exit(0);
@@ -92,9 +97,10 @@ void writeContent(){
 
   FILE *note = fopen(filename,"w");
 
-  fprintf(note,flags.content[MESSAGE]);
-
+  // fprintf(note,flags.content[MESSAGE]);
+  fputs(flags.content[MESSAGE],note);
   fclose(note);
+  free(filename);
 
 
 }
