@@ -43,8 +43,8 @@ int main(int argc , char *argv[]){
 
       state programRunning = TRUE;
 
-      while(programRunning != FALSE){
-        switch(flags.order[flags.eoFlag]){
+      for(int i = 1 ; programRunning != FALSE ; i++){
+        switch(flags.order[i]){
 
           case TITLE:
              flags.content[TITLE]=argv[flags.eoFlag];
