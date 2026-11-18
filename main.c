@@ -19,7 +19,7 @@ struct flags{
 
   int eoFlag;
   flag order[5];
-  char content[256][2];
+  char content[2][256];
 
 }flags;
 
@@ -37,22 +37,24 @@ int main(int argc , char *argv[]){
       for(int i=1;i!=argc && argv[i][0]=='-'  ;i++){
                //Parse the flag]
            parseFlag(&argv[i][1] , i);
-           flags.eoFlag = i+1;
+           flags.eoFlag = i;
 
       }
 
       state programRunning = TRUE;
 
-      for(int i = 1 ; programRunning != FALSE ; i++){
+      int argCount = flags.eoFlag + 1;
+
+      for(int i = 1 ; programRunning != FALSE && i <=flags.eoFlag ; i++){
         switch(flags.order[i]){
 
           case TITLE:
-             strcpy(flags.content[TITLE],argv[flags.eoFlag]);
+             strcpy(flags.content[TITLE],argv[argCount]);
              printf(flags.content[TITLE]);
             break;
 
           case MESSAGE:
-              strcpy(flags.content[MESSAGE],argv[flags.eoFlag]);
+              strcpy(flags.content[MESSAGE],argv[argCount]);
               printf(flags.content[TITLE]);
 
             break;
@@ -60,7 +62,7 @@ int main(int argc , char *argv[]){
           default:
             programRunning = FALSE;
         }
-        flags.eoFlag++;
+        argCount++;
       }
 
       writeContent();
