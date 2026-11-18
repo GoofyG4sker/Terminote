@@ -55,7 +55,7 @@ int main(int argc , char *argv[]){
 
           case MESSAGE:
               strcpy(flags.content[MESSAGE],argv[argCount]);
-              printf(flags.content[TITLE]);
+              printf(flags.content[MESSAGE]);
 
             break;
 
