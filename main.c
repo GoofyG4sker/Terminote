@@ -19,7 +19,7 @@ struct flags{
 
   int eoFlag;
   flag order[5];
-  char *content[];
+  char content[256][2];
 
 }flags;
 
@@ -47,12 +47,12 @@ int main(int argc , char *argv[]){
         switch(flags.order[i]){
 
           case TITLE:
-             flags.content[TITLE]=argv[flags.eoFlag];
+             strcpy(flags.content[TITLE],argv[flags.eoFlag]);
              printf(flags.content[TITLE]);
             break;
 
           case MESSAGE:
-              flags.content[MESSAGE]=argv[flags.eoFlag];
+              strcpy(flags.content[MESSAGE],argv[flags.eoFlag]);
               printf(flags.content[TITLE]);
 
             break;
@@ -90,17 +90,16 @@ void parseFlag(char *flag , int count){
 
 void writeContent(){
 
-  size_t strMemory= strlen(flags.content[TITLE]) + 4;
-  char *filename = malloc(strMemory);
+  // size_t strMemory= strlen(flags.content[TITLE]) + 4;
+  char filename[128];
 
-  snprintf(filename,strMemory,"%s.MD",flags.content[TITLE]);
+  snprintf(filename,sizeof(filename),"%s.MD",flags.content[TITLE]);
 
   FILE *note = fopen(filename,"w");
 
   // fprintf(note,flags.content[MESSAGE]);
   fputs(flags.content[MESSAGE],note);
   fclose(note);
-  free(filename);
 
 
 }
