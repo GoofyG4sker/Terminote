@@ -3,7 +3,7 @@
 #include <string.h>
 
 // Enter how many flags currently exsist in the program over here
-int flagCount = 2;
+#define FLAG_COUNT 2
 
 typedef enum{
   TRUE,
@@ -20,8 +20,8 @@ typedef enum{
 struct flags{
 
   int eoFlag;
-  flag order[flagCount];
-  char content[flagCount][];
+  flag order[FLAG_COUNT];
+  char content[FLAG_COUNT][];
 
 }flags;
 
@@ -45,9 +45,9 @@ int main(int argc , char *argv[]){
 
       state programRunning = TRUE;
 
-      int argCount = flags.eoFlag + 1;
 
-      for(int i = 1 ; programRunning != FALSE && i <=flags.eoFlag ; i++){
+
+      for(int i = 1,argCount = flags.eoFlag + 1 ; programRunning != FALSE && i <=flags.eoFlag ; i++,argCount++){
         switch(flags.order[i]){
 
           case TITLE:
@@ -64,7 +64,6 @@ int main(int argc , char *argv[]){
           default:
             programRunning = FALSE;
         }
-        argCount++;
       }
 
       writeContent();
