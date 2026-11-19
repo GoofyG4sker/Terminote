@@ -19,7 +19,7 @@ struct flags{
 
   int eoFlag;
   flag order[5];
-  char content[2][256];
+  char content[2][];
 
 }flags;
 
