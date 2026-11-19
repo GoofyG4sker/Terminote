@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Enter how many flags currently exsist in the program over here
+int flagCount = 2;
 
 typedef enum{
   TRUE,
@@ -18,8 +20,8 @@ typedef enum{
 struct flags{
 
   int eoFlag;
-  flag order[5];
-  char content[2][];
+  flag order[flagCount];
+  char content[flagCount][];
 
 }flags;
 
