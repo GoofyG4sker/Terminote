@@ -4,6 +4,8 @@
 
 // Enter how many flags currently exsist in the program over here
 #define FLAG_COUNT 2
+#define OBSIDIAN_VAULT "Hailo"
+
 
 typedef enum{
   TRUE,
@@ -97,10 +99,10 @@ void parseFlag(char *flag , int count){
 
 void writeContent(){
 
-  size_t titleMemory= strlen(flags.content[TITLE]) + 4;
+  size_t titleMemory= strlen(flags.content[TITLE]) + 4 + 16 ; //4 bytes for .MD \0 and 12 for TerminalNote
   char *filename = malloc(titleMemory);
 
-  snprintf(filename,titleMemory,"%s.MD",flags.content[TITLE]);
+  snprintf(filename,titleMemory,"%s/%s.MD",OBSIDIAN_VAULT,flags.content[TITLE]);
 
   FILE *note = fopen(filename,"w");
 
