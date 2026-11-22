@@ -7,9 +7,6 @@
 #define OBSIDIAN_VAULT "Notes"
 
 
-
-
-
 typedef enum{
   TRUE,
   FALSE
