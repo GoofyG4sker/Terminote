@@ -10,6 +10,12 @@ struct flags{
 
 }flags;
 
+typedef enum{
+  TITLE,
+  MESSAGE
+}flag;
+
+
 //Function Declarations
 void parseFlag(char *flag , int count);
 int logFlags(int argc , char *argv[]);
