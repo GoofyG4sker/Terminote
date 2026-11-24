@@ -41,7 +41,6 @@ int logFlags(int argc , char *argv[]){
         }
       }
 
-      writeContent();
 
     }else{
      //Throw Error
@@ -67,3 +66,5 @@ void parseFlag(char *flag , int count){
     }
 
 }
+
+
