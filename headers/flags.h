@@ -1,6 +1,17 @@
+#pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define FLAG_COUNT 2
+
+
+typedef enum{
+  TITLE,
+  MESSAGE
+}flag;
+
+
 
 struct flags{
 
@@ -8,12 +19,9 @@ struct flags{
   flag order[FLAG_COUNT];
   char *content[FLAG_COUNT];
 
-}flags;
+};
 
-typedef enum{
-  TITLE,
-  MESSAGE
-}flag;
+extern struct flags flags;
 
 
 //Function Declarations

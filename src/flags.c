@@ -1,4 +1,6 @@
-#include "../headers/flags.h"
+#include "../headers/main.h"
+
+struct flags flags;
 
 
 int logFlags(int argc , char *argv[]){
