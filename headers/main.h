@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,11 +15,6 @@ typedef enum{
   FALSE
 }state;
 
-
-typedef enum{
-  TITLE,
-  MESSAGE
-}flag;
 
 
 void writeContent();
