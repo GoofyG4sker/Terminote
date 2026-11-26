@@ -1,15 +1,12 @@
 #pragma once
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../headers/global.h"
 #define FLAG_COUNT 2
 
-
-typedef enum{
-  TITLE,
-  MESSAGE
-}flag;
 
 
 
